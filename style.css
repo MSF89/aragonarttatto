@@ -1,0 +1,420 @@
+
+@font-face {
+    font-family: aragon;
+    src: url(./Fuente/go3v2.ttf);
+}
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-family: aragon;
+} 
+
+#titulo{
+    font-size: .75em;
+    position: absolute;    
+    left: 40%;
+    color: white;
+}
+
+.btn {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+    width: 1em;
+    height: 1em;
+    outline: 0px solid  transparent;
+    border-radius: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.btn:hover{
+    font-size: 2.1em;
+}
+nav{ 
+    
+    background-color:black;
+    width: 100%;
+    height: 4em;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    align-items:center; 
+}
+.menu{
+    list-style: none;
+    width: 100%;
+    margin: 2%; 
+    display: none;
+    background-color: rgba(255, 255, 255, 0.712);
+    z-index: 9;
+}
+.menu.active{
+    max-height: 635px; 
+    display: block;  
+}
+nav a{
+    border-bottom: rgba(0, 0, 0, 0.33) solid .15em;
+    text-decoration: none;
+    color: black;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.25em;
+    display: block;
+    
+    
+} 
+.navLogo{
+    border-bottom: none   
+}
+nav a:hover{
+    color: rgb(206, 4, 4);
+    
+}
+header{
+    position: sticky;   
+    top: 0;
+    background-color: black;
+    width: 100%;
+    height: 4em;  
+    z-index: 99;  
+}
+#flex { 
+    display: flex; 
+    justify-content:space-between;
+    align-items: center;}
+.logo{
+    width: 10em;
+    height: 12em;
+    position: absolute;
+    top: -2.5em; 
+    left: -1.5em;   
+    z-index: 99;
+}
+main{
+ background-color: blueviolet;    
+ width: 100%;
+ min-height: 90vh;
+ height: 100%;
+ background-image: linear-gradient(rgba(178, 179, 181, 0.75), rgba(178, 179, 181, 0.75)), url(./Recursos/Tallados/dragonGrande.jpg);
+ background-size:cover;
+ background-repeat: no-repeat;
+ display:block;
+ align-items:center;  
+}
+
+
+footer{
+    position: sticky;
+    bottom: 0;
+    /* margin-top: auto; */
+    background-color: black;
+    width:100% ;
+    height: 5vh;
+    color: rgba(255, 255, 255, 0.689);
+    font-size: 8px;
+    text-align: center;
+    padding-top: 1em ;
+}
+footer h2{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*-------------------------------------------------------------------*/
+/*-----------Carrousel-----------------------------------------------*/
+/*-------------------------------------------------------------------*/
+#carrousel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.carrousel{
+    margin-top: 4em;
+    width: 90%;
+    max-width: 120em;
+    color: black;
+    padding: 2em;
+    border-radius: 1em;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    
+}
+.carrousel .grande{
+    width: 500%;
+    padding: 1em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1em;
+    box-shadow: 1em 1em 2em;
+    transition: all 0.5s ease;
+    transform: translateX(0%);
+
+}
+
+.carrousel .img{
+    width: calc(100% / 2 + 4em);
+    scroll-snap-align: center;
+    
+}
+.carrousel::-webkit-scrollbar{
+    display: none;
+}
+
+.carrousel .puntos{
+    width: 100%;
+    padding: .4em;
+    margin: 1em 0 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.carrousel .punto{
+    display: none;
+}
+
+
+.punto.activo{
+    background-image: url(./Recursos/logo1.png);
+    background-size:cover;
+}
+
+/*-------------------------------------------------------------------*/
+/*-----------OpenCloseImg--------------------------------------------*/
+/*-------------------------------------------------------------------*/
+
+#contPrincipal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+#contInterno{
+    padding: 2px;
+    display:flex;
+    justify-content: center;
+    position: relative;
+    
+}
+#contInterno img{
+    width: 100%;
+    height: auto;    
+}
+#img-activa{
+    width: 60%;
+    object-fit: cover; 
+    border: solid 3px black;
+    border-radius: .5em;
+}
+#contInterno button{
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color:black;
+    font-family:Arial, Helvetica, sans-serif
+}
+#contInterno button:hover{
+    font-size: 3.2rem;
+}
+#btnClose{
+    position: absolute;
+    top: 0;
+    right: 5%;
+    font-size: 3rem;
+}
+#btnPrev{
+    position: absolute;
+    top: 45%;
+    left: 4%;
+    font-size: 3rem;
+}
+#btnNext{
+    position: absolute;
+    top: 45%;
+    right: 4%;
+    font-size: 3rem;
+}
+
+/*-------------------------------------------------------------------*/
+/*-----------Iconos redes--------------------------------------------*/
+/*-------------------------------------------------------------------*/
+
+#redes{
+    /* position:sticky; */
+    background-color: rgba(255, 255, 255, 0);
+   /*  padding: 1em; */
+    width: 100%;
+    /* height: 10%; */
+    display: flex;    
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#redes img{
+    width: 3em;
+    opacity: 70%;
+    box-shadow: 1em 1em 2em black;
+    border-radius: 50%;
+    margin: .5em;
+}
+.wsp{
+    width: 3em;
+    opacity: 70%;
+    box-shadow: 1em 1em 2em black;
+    border-radius: 50%;
+    position: fixed;
+    top: 85%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+/*-------------------------------------------------------------------*/
+/*-----------Galerias------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+
+.secciones{
+    display: flex;
+}
+.cuadro{
+    height: 90%; 
+    margin-top: 2em;
+   
+}
+.cuadro h1{
+    font-size: 1.5em;
+    margin-left: 40%;
+    margin-top: -.75em;
+}
+#gridGallery{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-flow: dense;
+    gap: 10px;
+    padding: 10px;
+    margin: 0 10px;
+}
+#gridGallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: solid 3px black;
+    border-radius: .5em;
+}
+
+#gridGallery img:hover{
+    filter: opacity(.5);
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
+
+
+@media screen and (min-width: 600px) {
+   
+    nav .btn{
+        display: none;
+    }
+    nav a{
+        text-decoration: none;
+        color: white;
+        padding: .25em;
+        text-align: center;
+        font-size: 1em;
+        display: block;
+        border-bottom: none;
+    } 
+    
+    #titulo{
+        display: none;
+    }
+    .logo{
+        width: 15em;
+        height: 15em;
+        z-index: 99;
+    }
+    
+    .menu{
+        background-color: black;
+        display: flex; 
+        justify-content: end;
+        max-height: 100%;
+        font-size: 1em;
+        width: 100%;
+    }
+
+    .cuadro h1{
+        font-size: 2em;
+    }
+    
+    .carrousel .grande{
+        width: 300%;
+    }
+    .carrousel .img{
+        width: calc(100% / 1.5 );
+    }
+    .carrousel .punto{
+        display: block;
+        width: 1.5em;
+        height: 1.5em;
+        margin: .5em .5em 0;    
+        border-radius: 1em;
+        background-color: black;
+        list-style: none;   
+        box-shadow: 1em 1em 2em;    
+    }
+    
+    #gridGallery img:nth-child(2n){
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    main.secciones{
+        display: flex;
+        align-items:center;  
+    } 
+
+
+    
+    #contInterno{
+        border-radius: solid 2px #f3f3f3;
+    }
+    #contInterno img{
+        width: 75%;
+        height: 90%;
+    }
+    #contInterno button{
+        color:#f3f3f3;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .carrousel .grande{
+        width: 200%;
+
+    }
+    .carrousel .img{
+        width: calc(100% / 2 -2em);
+    }
+
+    .carrousel .uno{
+        display: none;
+    }
+    #contInterno img{
+        width: 60%;
+        height: 90%;
+    }
+}

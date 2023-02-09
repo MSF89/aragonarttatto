@@ -1,50 +1,66 @@
-/*-------------------------------------------------------------------*/
-/*------BurguerMenu--------------------------------------------------*/
-/*-------------------------------------------------------------------*/
 const d = document;
-const menuBtn = d.querySelector('nav .btn');
-const menuLst = d.querySelector('nav .menu');
-menuBtn.onclick = () => menuLst.classList.toggle('active')
+
+let listaSecciones = [
+    {nombre: 'Diseños', link: "disenios.html", imagen: "./Recursos/Caratulas/disenios.png"},
+    {nombre: 'Dibujos', link: "dibujos.html", imagen: "./Recursos/Caratulas/dibujos2.png"},
+    {nombre: 'Tattoos', link: "tattoos.html", imagen: "./Recursos/Caratulas/tattoos.png"},
+    {nombre: 'Promos', link: "promos.html", imagen: "./Recursos/Caratulas/promos.png"},
+    {nombre: 'Pinturas', link: "pinturas.html", imagen: "./Recursos/Caratulas/pinturas.png"},
+    {nombre: 'Tallados', link: "tallados.html", imagen: "./Recursos/Caratulas/tallados.png"}
+]
 
 /*-------------------------------------------------------------------*/
-/*------Carrousel----------------------------------------------------*/
+/*--------NavMenu-Desde-Js-------------------------------------------*/
 /*-------------------------------------------------------------------*/
 
-const grande = d.querySelector('.grande');
-const punto = d.querySelectorAll('.punto');
-var mediaQuery1 = window.matchMedia("(min-width: 600px)");
-var mediaQuery2 = window.matchMedia("(min-width: 900px)");
+let ul = d.createElement('ul');
+ul.classList.add("menu", "navbar-nav", "me-auto", "my-2", "my-lg-0", "navbar-nav-scroll");
+ul.innerHTML='';
 
-
-punto.forEach((cadaPunto , p) => {
-    punto[p].addEventListener('click', ()=>{
-        
-        let posicion = p;
-        let operacion;
-        if (mediaQuery2.matches){
-            operacion = posicion * -50;            
-        }else if (mediaQuery1.matches) {  
-            operacion = posicion * -25;
-        } 
-        
-        grande.style.transform = `translateX(${operacion}%)`;
-        
-        punto.forEach((cadaPunto, p) => {
-            punto[p].classList.remove('activo');
-        })
-        punto[p].classList.add('activo');   
+function itemsMenu(){
+    listaSecciones.forEach((item, index)=>{
+        ul.innerHTML += 
+        `<li class="nav-item">
+            <a class="nav-link active text-white bg-black" aria-current="page" id="navLink-${index}" href=${item.link}>${item.nombre}</a>
+        </li>`
     })
-})
+
+    d.getElementById('navbarScroll').appendChild(ul);
+}
+
+itemsMenu();
+
+/*-------------------------------------------------------------------*/
+/*------Secciones-conPlantilla Handlebars----------------------------*/
+/*-------------------------------------------------------------------*/
+
+async function  secciones(){
+
+    try {
+        let datos = await fetch('plantillaSecciones.hbs')
+        if(!datos.ok) throw datos.status
+        let plantilla = await datos.text()
+        let template = Handlebars.compile(plantilla)
+        let html = template({listaSecciones})
+        d.querySelector('#seccionesInicio').innerHTML = html
+    } catch (error) {
+        console.error('Error', error);
+    }
+
+}
+secciones();
 
 /*-------------------------------------------------------------------*/
 /*------Galerias-----------------------------------------------------*/
 /*-------------------------------------------------------------------*/
+
 let galleryDisenios = d.querySelector('.disenios');
 let galleryDibujos = d.querySelector('.dibujos');
 let galleryTattoos = d.querySelector('.tattoos');
 let galleryPromos = d.querySelector('.promos');
 let galleryPinturas = d.querySelector('.pinturas');
 let galleryTallados = d.querySelector('.tallados');
+
 
 /*-------------------------------------------------------------------*/
 /*------GalleryDisenios----------------------------------------------*/
@@ -59,6 +75,7 @@ if(galleryDisenios){
         galleryDisenios.appendChild(crearImg);
     }
 }
+
 
 /*-------------------------------------------------------------------*/
 /*------GalleryDibujos-----------------------------------------------*/
@@ -139,29 +156,24 @@ const imagenes = d.querySelectorAll('#gridGallery img');
 const lightbox = d.querySelector('#contPrincipal');
 const imagenActiva = d.querySelector('#img-activa');
 let indiceImg = 0;
-
+let galerias = [
+    {nombre: imgDisenios},
+    {nombre: imgDIbujos},
+    {nombre: imgPinturas},
+    {nombre: imgPromos},
+    {nombre: imgTattoos},
+    {nombre: imgTallados}
+]
 // Abrir el lightbox
 const abreLightbox = (e) => {
     imagenActiva.src = e.target.src;
     lightbox.style.display = 'flex';
-    if(imgDisenios){
-        indiceImg = imgDisenios.indexOf(e.target);
-    }
-    if(imgDIbujos){
-        indiceImg = imgDIbujos.indexOf(e.target);
-    }
-    if(imgPinturas){
-        indiceImg = imgPinturas.indexOf(e.target);
-    }
-    if(imgPromos){
-        indiceImg = imgPromos.indexOf(e.target);
-    }
-    if(imgTattoos){
-        indiceImg = imgTattoos.indexOf(e.target);
-    }
-    if(imgTallados){
-        indiceImg = imgTallados.indexOf(e.target);
-    }
+    
+    galerias.forEach((item)=>{
+
+        indiceImg = `${item.nombre}`.indexOf(e.target);
+    })
+   
 }
 
 imagenes.forEach((imagen) => {

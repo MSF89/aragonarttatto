@@ -10,180 +10,71 @@
     font-family: aragon;
 } 
 
-#titulo{
-    font-size: .75em;
-    position: absolute;    
-    left: 40%;
-    color: white;
-}
-
-.btn {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2em;
-    width: 1em;
-    height: 1em;
-    outline: 0px solid  transparent;
-    border-radius: 12%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-.btn:hover{
-    font-size: 2.1em;
-}
-nav{ 
-    
-    background-color:black;
-    width: 100%;
-    height: 4em;
-    display: flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    align-items:center; 
+.titulo{
+    display: none;        
 }
 .menu{
-    list-style: none;
-    width: 100%;
-    margin: 2%; 
-    display: none;
-    background-color: rgba(255, 255, 255, 0.712);
-    z-index: 9;
-}
-.menu.active{
-    max-height: 635px; 
-    display: block;  
-}
-nav a{
-    border-bottom: rgba(0, 0, 0, 0.33) solid .15em;
-    text-decoration: none;
-    color: black;
-    padding: 1em;
-    text-align: center;
-    font-size: 1.25em;
-    display: block;
-    
-    
+    --bs-scroll-height: 500px;  
 } 
-.navLogo{
-    border-bottom: none   
-}
-nav a:hover{
-    color: rgb(206, 4, 4);
+.menu a:hover{
     
+    opacity: .5;
 }
+nav a{    
+    text-decoration: none;    
+    text-align: center;    
+} 
+
 header{
     position: sticky;   
     top: 0;
-    background-color: black;
-    width: 100%;
-    height: 4em;  
     z-index: 99;  
 }
-#flex { 
-    display: flex; 
-    justify-content:space-between;
-    align-items: center;}
+
 .logo{
     width: 10em;
     height: 12em;
     position: absolute;
-    top: -2.5em; 
+    top: -3em; 
     left: -1.5em;   
     z-index: 99;
 }
 main{
  background-color: blueviolet;    
- width: 100%;
- min-height: 90vh;
- height: 100%;
  background-image: linear-gradient(rgba(178, 179, 181, 0.75), rgba(178, 179, 181, 0.75)), url(./Recursos/Tallados/dragonGrande.jpg);
  background-size:cover;
  background-repeat: no-repeat;
- display:block;
- align-items:center;  
+  
+}
+.grid{
+    gap: 1em;
+}
+.border-dark{
+    --bs-border-opacity: .5;
+}
+.card{
+    margin-top: 1.5em;
+}
+.card:hover{
+    opacity: .6;
 }
 
 
 footer{
     position: sticky;
-    bottom: 0;
-    /* margin-top: auto; */
+    bottom: 5;
     background-color: black;
     width:100% ;
-    height: 5vh;
+    height: 2em;
     color: rgba(255, 255, 255, 0.689);
-    font-size: 8px;
     text-align: center;
-    padding-top: 1em ;
+    padding-top: .65em ;
 }
 footer h2{
     font-family: 'Times New Roman', Times, serif;
+    font-size: .75em;
 }
 
-/*-------------------------------------------------------------------*/
-/*-----------Carrousel-----------------------------------------------*/
-/*-------------------------------------------------------------------*/
-#carrousel{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-}
-.carrousel{
-    margin-top: 4em;
-    width: 90%;
-    max-width: 120em;
-    color: black;
-    padding: 2em;
-    border-radius: 1em;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    
-}
-.carrousel .grande{
-    width: 500%;
-    padding: 1em;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 1em;
-    box-shadow: 1em 1em 2em;
-    transition: all 0.5s ease;
-    transform: translateX(0%);
-
-}
-
-.carrousel .img{
-    width: calc(100% / 2 + 4em);
-    scroll-snap-align: center;
-    
-}
-.carrousel::-webkit-scrollbar{
-    display: none;
-}
-
-.carrousel .puntos{
-    width: 100%;
-    padding: .4em;
-    margin: 1em 0 0;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-}
-.carrousel .punto{
-    display: none;
-}
-
-
-.punto.activo{
-    background-image: url(./Recursos/logo1.png);
-    background-size:cover;
-}
 
 /*-------------------------------------------------------------------*/
 /*-----------OpenCloseImg--------------------------------------------*/
@@ -254,9 +145,7 @@ footer h2{
 #redes{
     /* position:sticky; */
     background-color: rgba(255, 255, 255, 0);
-   /*  padding: 1em; */
     width: 100%;
-    /* height: 10%; */
     display: flex;    
     flex-flow: row nowrap;
     justify-content: center;
@@ -268,6 +157,9 @@ footer h2{
     box-shadow: 1em 1em 2em black;
     border-radius: 50%;
     margin: .5em;
+}
+#redes img:hover{
+    opacity: 100%;
 }
 .wsp{
     width: 3em;
@@ -286,18 +178,10 @@ footer h2{
 /*-----------Galerias------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 
-.secciones{
-    display: flex;
-}
-.cuadro{
-    height: 90%; 
-    margin-top: 2em;
-   
-}
 .cuadro h1{
     font-size: 1.5em;
     margin-left: 40%;
-    margin-top: -.75em;
+    padding: .5em;
 }
 #gridGallery{
     display: grid;
@@ -305,7 +189,7 @@ footer h2{
     grid-auto-rows: minmax(100px, auto);
     grid-auto-flow: dense;
     gap: 10px;
-    padding: 10px;
+    padding: .25em;
     margin: 0 10px;
 }
 #gridGallery img{
@@ -326,28 +210,13 @@ footer h2{
 
 @media screen and (min-width: 600px) {
    
-    nav .btn{
-        display: none;
-    }
-    nav a{
-        text-decoration: none;
+   
+   
+    
+    .titulo{
         color: white;
-        padding: .25em;
-        text-align: center;
-        font-size: 1em;
         display: block;
-        border-bottom: none;
-    } 
-    
-    #titulo{
-        display: none;
-    }
-    .logo{
-        width: 15em;
-        height: 15em;
-        z-index: 99;
-    }
-    
+    }    
     .menu{
         background-color: black;
         display: flex; 
@@ -361,34 +230,11 @@ footer h2{
         font-size: 2em;
     }
     
-    .carrousel .grande{
-        width: 300%;
-    }
-    .carrousel .img{
-        width: calc(100% / 1.5 );
-    }
-    .carrousel .punto{
-        display: block;
-        width: 1.5em;
-        height: 1.5em;
-        margin: .5em .5em 0;    
-        border-radius: 1em;
-        background-color: black;
-        list-style: none;   
-        box-shadow: 1em 1em 2em;    
-    }
-    
     #gridGallery img:nth-child(2n){
         grid-column: span 2;
         grid-row: span 2;
     }
-    main.secciones{
-        display: flex;
-        align-items:center;  
-    } 
-
-
-    
+        
     #contInterno{
         border-radius: solid 2px #f3f3f3;
     }
@@ -401,20 +247,18 @@ footer h2{
     }
 }
 
+
 @media screen and (min-width: 900px) {
-    .carrousel .grande{
-        width: 200%;
-
-    }
-    .carrousel .img{
-        width: calc(100% / 2 -2em);
-    }
-
-    .carrousel .uno{
-        display: none;
-    }
+   
     #contInterno img{
         width: 60%;
         height: 90%;
     }
+}
+
+@media screen and (min-width: 992px) {
+    .titulo{
+        display: none;
+    }
+    
 }
